@@ -1,0 +1,42 @@
+<!-- app/templates/admin/seeder.hbs -->
+<h1>Gerador de dados mock com Ember-Faker</h1>
+<div class="row">
+ <div class="col-md-4">
+     {{
+         number-box 
+         title="Bibliotecas" 
+         number=libraries.length
+     }}
+ </div>
+ <div class="col-md-4">
+     {{
+         number-box title="Autores" 
+         number=authors.length
+     }}
+ </div>
+ <div class="col-md-4">
+     {{
+         number-box 
+         title="Livros" 
+         number=books.length
+     }}
+ </div>
+</div>
+
+{{seeder-block
+ sectionTitle='Bibliotecas'
+ generateAction='generateLibraries'
+ deleteAction='deleteLibraries'
+ generateReady=libDone
+ deleteReady=libDelDone
+ generateInProgress=generateLibrariesInProgress
+ deleteInProgress=deleteLibrariesInProgress}}
+
+{{seeder-block
+ sectionTitle='Autores com Livros'
+ generateAction='generateBooksAndAuthors'
+ deleteAction='deleteBooksAndAuthors'
+ generateReady=authDone
+ deleteReady=authDelDone
+ generateInProgress=generateBooksInProgress
+ deleteInProgress=deleteBooksInProgress}}

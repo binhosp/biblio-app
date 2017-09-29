@@ -1,0 +1,18 @@
+<!-- app/templates/libraries/index.hbs -->
+<h2>Lista de Bibliotecas</h2>
+
+{{#if model }} 
+    <div class="row">
+      {{#each model as | library | }}
+            <div class="col-md-4">
+              <!-- o componente library-item.hbs recebe um obj library como parametro  -->
+              {{#library-item item=library }} 
+                {{#link-to "libraries.edit" library.id class="btn btn success btn-xs" }}Edtar{{/link-to}}
+                <button class="btn btn-danger btn-xs" {{ action 'deleteLibrary' library }}>Remover</button> 
+              {{/library-item}}
+            </div>
+        {{/each}}
+    </div>
+{{else}} 
+    <div class="alert alert-info" role="alert">Nenhum registro encontrado...</div> 
+{{/if}}

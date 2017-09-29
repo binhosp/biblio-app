@@ -1,0 +1,23 @@
+<!-- app/templates/libraries/form.hbs -->
+<!-- 
+    O link libraries.new chamara a route.js (this.route('new');)
+    Em seguida o routes/libraries/new.js renderizará o libraries/form.hbs 
+    usando o metodo  renderTemplate()
+ -->
+<h2>{{title}}</h2>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <!-- Faz uso de um componente library-item-form(library-item-form.hbs), que fica  esquerda da tela-->
+    {{library-item-form item=model buttonLabel=buttonLabel action="saveLibrary"}}    
+  </div>
+
+  <div class="col-md-4">
+    <!-- Faz uso de um outro um componente library-item(library-item.hbs) que é um card q recebe as informações do fomulário dicamicamente -->
+    {{#library-item item=model}}
+      <br/>
+    {{/library-item}}
+  </div>
+</div>
+
